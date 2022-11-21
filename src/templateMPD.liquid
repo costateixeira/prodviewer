@@ -1,0 +1,73 @@
+<div
+  class="container m-1 p-1">
+  <h4>
+    {{ name[0].productName }}
+  </h4>
+  {% for namepart in name[0].namePart %}
+    <p>
+      {{ namepart.type.coding[0].display }}:
+      <b>
+        {{ namepart.part }}
+      </b>
+    </p>
+  {% endfor %}
+  {% for pid in identifier %}
+    {{ pid.system | split: '/' | last | upcase }}:
+    <b>
+      {{ pid.value }}
+    </b>
+  {% endfor %}
+
+  {% if name[0].countryLanguage %}
+    <div>
+      {% for lang in name[0].countryLanguage %}
+        <p>
+          Country:
+          <b>
+            {{ lang.country.coding[0].display }}
+          </b>
+        </p>
+        <p>
+          Language:
+          <b>
+            {{ lang.language.coding[0].display }}
+          </b>
+        </p>
+
+      {% endfor %}
+    </div>
+  {% endif %}
+  <div>
+    <p>
+      status: {{status.coding[0].display}}
+    </p>
+  </div>
+  <div>
+    <p>
+      Domain: {{domain.coding[0].display}}
+    </p>
+  </div>
+  <div>
+    <p>
+      Combined pharmaceutical dose form: {{combinedPharmaceuticalDoseForm.coding[0].display}}
+    </p>
+  </div>
+  <div>
+    <p>
+      Legal Status of Supply: {{legalStatusOfSupply.coding[0].display}}
+    </p>
+  </div>
+
+  <div>
+    Classification:
+    <ul>
+      {% for class in classification[0].coding %}
+        <li>
+          {{class.display}} ({{class.code}})
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+
+</div>

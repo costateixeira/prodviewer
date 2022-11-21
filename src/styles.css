@@ -1,0 +1,30 @@
+.rcorners {
+    border-radius: 7px;
+    border: 1px solid #71775b;    
+    padding: 5px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+
+
+.ppd {
+    background: #d4f9ff;
+}
+
+.mpd {
+    background: #fffbae;
+}
+
+
+.ra {
+    background: #ffc4ae;
+}
+
+
+
+.apd {
+    background: #f1e2f5;
+}

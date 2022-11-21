@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Client-Side Liquid Templates</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="./liquid.min.js"></script>
+    <script type="text/javascript">
+      var Liquid = require('liquid');
+    </script>
+  </head>
+
+  <body>
+    <script id="simplewithfilter" type="text/liquid">
+      <div>Here is the value of foobar in uppercase: <strong>{{ foobar | upcase }}</strong></div>
+    </script>
+
+	<script id="ifblock" type="text/liquid" src="./ifblock.liquid">
+        <div>
+            Trying out the if block.  If it works, you should see "Hooray!":&nbsp;
+            {% if cheer %}
+              Hooray!
+            {% else %}
+              Boo!
+            {% endif %}
+          </div>
+          
+        
+    </script>
+
+
+	<div id="page" style="display:none;">
+      {% partial simplewithfilter %}
+      {% partial ifblock %}
+	</div>
+
+    <script type="text/javascript">
+      $(function() {
+        Liquid.Partial.registerTemplates();  // Finds all script tags with type="text/liquid" and registers them as partials
+
+
+        var page = $('#page');
+        var pageTemplate = page.html();
+        $.getJSON("test.json", function(json) {
+            page.html(Liquid.Template.parse(pageTemplate).render(json)).show();
+        });
+
+    });
+    </script>
+  </body>
+</html>
