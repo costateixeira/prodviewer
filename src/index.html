@@ -22,7 +22,7 @@
         const engine = new liquidjs.Liquid()
         $.get("./template.liquid", function(ltemplate) {
             console.log(ltemplate)
-           $.getJSON("./canifug.json", function(json) {
+           $.getJSON("./Bundle-005-CanifugCremolum-EE-FullProduct.json", function(json) {
                 console.log(json)
                 engine
                 .parseAndRender(ltemplate, json)
