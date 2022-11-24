@@ -1,0 +1,9 @@
+<div class="container m-1 p-1 rcorners apd">
+  Number: {{ item.nbr }}
+  {% if item.item %}
+    {% assign item = item.item %}
+    {% include 'items.liquid' %}
+  {% else %}
+    finished!
+  {% endif %}
+</div>

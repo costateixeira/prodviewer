@@ -1,0 +1,109 @@
+<div class="container m-1 p-1 rcorners miding">
+  <p>Package: {{pckg.quantity }} {{pckg.type.coding[0].display }} ({{pckg.material[0].coding[0].display }})</p>
+  {% if pckg %}werwerwe
+    <b>
+      {{pckg.type.coding[0].display}}
+    </b>
+  {% endif%}
+
+
+  {% with pckg in pckg.package %}
+  enter one level deeper:
+  {% include 'ppd-package.liquid' %}
+
+
+
+
+{% assign mids = entry | where: "resource.resourceType","ManufacturedItemDefinition"%}
+{% for midr in mids %}
+  {% assign mid = midr.resource %}
+  {% for pckgitem in pckg.containedItem %}
+
+    {% if pckgitem.item.reference.reference == mid.id | prepend: 'ManufacturedItemDefinition/' %}
+      <div class="container m-1 p-1 rcorners mid">
+        <b>
+          {{ pckgitem.amount.value }} X
+        </b>
+        <p>
+          <b>
+            {{ mid.id}}</b>
+          <p>
+            Dose form:
+            <b>
+              {{ mid.manufacturedDoseForm.coding[0].display}}
+            </b>
+          </p>
+
+          <p>
+            Presentation unit:
+            <b>
+              {{ mid.unitOfPresentation.coding[0].display}}
+            </b>
+          </p>
+
+          Ingredients:
+          <ul>
+            {% assign midings = entry | where: "resource.resourceType","Ingredient"%}
+            {% for midingr in midings %}
+              {% assign miding = midingr.resource %}
+
+              {% if mid.for[1].reference == miding.id | prepend: 'ManufacturedItemDefinition/' %}
+                <div class="container m-1 p-1 rcorners miding">
+                  <b>
+                    {{ miding.id}}</b>
+                  <p>
+                    Status:
+                    <b>
+                      {{ miding.status | capitalize}}
+                    </b>
+                  </p>
+
+                  <p>
+                    Role:
+                    <b>
+                      {{ miding.role.coding[0].display}}
+                    </b>
+                  </p>
+
+                  <p>
+                    Substance:
+                    <b>
+                      {{ miding.substance.code.concept.coding[0].display}}
+                    </b>
+                  </p>
+
+                  {% for strn in miding.substance.strength %}
+                    {% if strn.concentrationRatio %}
+                      <p>
+                        Concentration strength:
+                        <b>
+                          {{ strn.concentrationRatio.numerator.value}}{{ strn.concentrationRatio.numerator.unit}} /
+                          {{ strn.concentrationRatio.denominator.value}}{{ strn.concentrationRatio.denominator.unit}}
+                        </b>
+                      </p>
+                    {% endif %}
+                  {% endfor %}
+
+                  {% for strn in miding.substance.strength %}
+                    {% if strn.presentationRatio %}
+                      <p>
+                        Presentation strength:
+                        <b>
+                          {{ strn.presentationRatio.numerator.value}} {{ strn.presentationRatio.numerator.unit}} /
+
+                          {{ strn.presentationRatio.denominator.value}} {{ strn.presentationRatio.denominator.unit}}
+                        </b>
+                      </p>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  {% endfor %}
+
+</div>
