@@ -10,7 +10,7 @@
     {% for pckgcontainedItem in pckg.containedItem %}
       {% if pckgcontainedItem.item.reference.reference == fmid %}
       {% for pckgitem in pckg.containedItem %}
-        <div class="container rcorners pack">
+        <div class="container rcorners pack bleft">
         {% include 'ppd-package.liquid' %}
         <div class="container rcorners packitem">
         Containing: {{ pckgitem.amount.value }} {{ pckgitem.amount.unit }}

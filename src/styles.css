@@ -1,9 +1,22 @@
 .rcorners {
     border-radius: 7px;
     border: 1px solid #71775b;    
-    padding: 5px;
+    padding-left: 12px;!important;
+    padding-right: 12px;!important;
+    padding-bottom: 7px;!important;
 }
 
+
+.bleft {
+    margin-topss:7px;
+    border-radius: 10px; 
+    border-left: 9px solid rgb(77, 73, 73);
+    }
+
+.pleft {
+        border-left: 9px solid rgb(77, 73, 73);
+   }
+            
 p {
     margin-top: 0;
     margin-bottom: 0rem;
@@ -20,7 +33,16 @@ p {
 
 
 .ra {
+    
     background: #ffc4ae;
+
+}
+
+.divtitle {
+    text-align: center;
+    margin-top:-7px;
+    margin-bottom:-1px;
+    
 }
 
 
@@ -46,6 +68,27 @@ p {
 }
 
 
+.beginlist {
+
+}
+
+.listcontainer{
+    margin-top: 7px;
+    padding-top: 7px;
+
+}
+
+
 .packitem {
     background: #cbddd3;
 }
+
+.classif {
+
+}
+
+
+dl, ol, ul {
+    margin-bottom: .1rem;
+}
+
