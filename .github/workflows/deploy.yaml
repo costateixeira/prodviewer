@@ -17,4 +17,4 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         source: "index.html"
-        target: "/appserver/apps/visualiser/"
+        target: "visualiser"
