@@ -9,6 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    
+    
+    - name: Run a multi-line script
+      run: |
+        mkdir ../build
+        cp -TR index.html ../build
+        tar -cvf deploy.tar ../build/
+        
+    
     - name: copy file via ssh password
       uses: appleboy/scp-action@master
       with:
@@ -16,5 +25,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        source: "index.html"
-        target: "visualiser"
+        source: "deploy.tar"
+        target: "/appserver/apps/visualiser"
