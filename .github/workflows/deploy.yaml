@@ -15,6 +15,6 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
+#        port: ${{ secrets.PORT }}
         source: "index.html,templates,assets"
         target: "/appserver/apps/visualiser"
