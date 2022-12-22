@@ -10,29 +10,50 @@
     <link rel="stylesheet" href="./assets/css/styles.css" >
     <meta http-equiv="refresh" content="100" >
   </head>
-
   <body>
 
     <div id="result" class="container rcorners"></div>
     <p id="preamble"></p>
 
     <script type="text/javascript">
-      const url = new URLSearchParams(window.location.search).get('url');
+      url=window.location.search.split('url=')[1];      
       document.getElementById("preamble").innerHTML = url;
-      
+
     </script>
   
     <script type="text/javascript">
-//        const template = document.querySelector('[type="text/template"]')
+
+// To Do: Get a search bundle from a single MPD
+urlsplit=url.split('/MedicinalProductDefinition/');
+
+if (urlsplit[1]) {
+  console.log('BEFORE: '+urlsplit[0]);
+  console.log('AFTER: '+urlsplit[1]);
+  mpdid=urlsplit[1]
+//  qrystring = '?_include%3Aiterate=AdministrableProductDefinition%3Amanufactured-item&_revinclude=RegulatedAuthorization%3Asubject&_revinclude=PackagedProductDefinition%3Apackage-for&_revinclude=AdministrableProductDefinition%3Aform-of&_revinclude%3Aiterate=Ingredient%3Afor&_format=json&_id='+mpdid;
+  qrystring = '?_revinclude=RegulatedAuthorization:subject&_revinclude=PackagedProductDefinition:package-for&_revinclude=AdministrableProductDefinition:form-of&_include:iterate=AdministrableProductDefinition:manufactured-item&_revinclude:iterate=Ingredient:for&_format=json&_id='+mpdid;
+  url=urlsplit[0]+'/MedicinalProductDefinition'+qrystring;
+}
+
+/* Search:
+
+/MedicinalProductDefinition?_id=XXXXXXX
+   &_revinclude=RegulatedAuthorization:subject
+   &_revinclude=PackagedProductDefinition:package-for
+   &_revinclude=AdministrableProductDefinition:form-of
+     &_include:iterate=AdministrableProductDefinition:manufactured-item
+       &_revinclude:iterate=Ingredient:for
+*/
+
         const result = document.querySelector('#result')
         const engine = new liquidjs.Liquid()
         $.get("./templates/template.liquid", function(ltemplate) {
-            console.log(ltemplate)
-            const resourceUrl = new URLSearchParams(window.location.search).get('url');
-            $.getJSON(resourceUrl, function(json) {
-// index.html?url=./resources/Bundle-005-CanifugCremolum-EE-FullProduct.json
-//            $.getJSON("./resources/Bundle-005-CanifugCremolum-EE-FullProduct.json", function(json) {
-                console.log(json)
+            const resourceUrl = window.location.search.split('url=')[1];
+            $.getJSON(url, function(json) {
+              console.log(url)
+//e.g. index.html?url=./resources/Bundle-005-CanifugCremolum-EE-FullProduct.json
+//            $.getJSON("./resources/Bundle-005-CanifugCremolum-EE-FullProduct2.json", function(json) {
+//                console.log(json)
                 engine
                 .parseAndRender(ltemplate, json)
                 .then(html => result.innerHTML = html)
