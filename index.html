@@ -14,29 +14,60 @@
     <div id="result" class="container rcorners"></div>
     <p id="preamble"></p>
 
+
+
     <script type="text/javascript">
       url=window.location.search.split('url=')[1];      
       document.getElementById("preamble").innerHTML = url;
     </script>
-  
+
+
     <script type="text/javascript">
-      urlsplit=url.split('/MedicinalProductDefinition/');
+        var templatedata = {}
+        var templateResourceType = "";
+        var templateQuery = "";
+        var templateFile="";
+        var resourceType="MedicinalProductDefinition"
+
+        // need to get these variables from the URL and the templates.json file
+/*
+        $.getJSON('templates.json', function(jd) {
+          templatedata = jd;
+          console.log(templatedata)
+        });
+        console.log(templatedata)
+        for(templateEntry in templatedata){
+          if (templateEntry.resourceType == resourceType ) {
+            templateQuery = templateEntry.query
+            templateFile=templateEntry.template
+          };
+        }
+*/
+
+      templateFile='mpd.liquid';
+      templateQuery="&_revinclude=RegulatedAuthorization:subject&_include:iterate=RegulatedAuthorization:holder&_revinclude=PackagedProductDefinition:package-for&_include:iterate=PackagedProductDefinition:manufactured-item&_revinclude=AdministrableProductDefinition:form-of&_revinclude:iterate=Ingredient:for"
+      templateResourceType="MedicinalProductDefinition"
+
+      urlsplit=url.split('/'+resourceType+'/');
       if (urlsplit[1]) {
-        mpdid=urlsplit[1]
-        qrystring = '?_revinclude=RegulatedAuthorization:subject&_revinclude=PackagedProductDefinition:package-for&_revinclude=AdministrableProductDefinition:form-of&_include:iterate=AdministrableProductDefinition:manufactured-item&_revinclude:iterate=Ingredient:for&_format=json&_id='+mpdid;
-        url=urlsplit[0]+'/MedicinalProductDefinition'+qrystring;
+        mpdid=urlsplit[1];
+//        qrystring = '&_revinclude=RegulatedAuthorization:subject&_include:iterate=RegulatedAuthorization:holder&_revinclude=PackagedProductDefinition:package-for&_include:iterate=PackagedProductDefinition:manufactured-item&_revinclude=AdministrableProductDefinition:form-of&_revinclude:iterate=Ingredient:for'
+        url=urlsplit[0]+'/'+templateResourceType+'?_id='+mpdid+templateQuery+'&_format=json';
       }
+      
+
       /* Search:
       /MedicinalProductDefinition?_id=XXXXXXX
         &_revinclude=RegulatedAuthorization:subject
+          &_include:iterate=RegulatedAuthorization:holder
         &_revinclude=PackagedProductDefinition:package-for
+          &_include:iterate=PackagedProductDefinition:manufactured-item
         &_revinclude=AdministrableProductDefinition:form-of
-          &_include:iterate=AdministrableProductDefinition:manufactured-item
             &_revinclude:iterate=Ingredient:for
       */
       const result = document.querySelector('#result')
       const engine = new liquidjs.Liquid()
-      $.get("./templates/template.liquid", function(ltemplate) {
+      $.get("./templates/"+templateFile, function(ltemplate) {
           const resourceUrl = window.location.search.split('url=')[1];
           $.getJSON(url, function(json) {
             console.log(url)
