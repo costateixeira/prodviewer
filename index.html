@@ -2,13 +2,12 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Client-Side Liquid Templates</title>
+    <title>MPD Viewer</title>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/liquidjs/dist/liquid.browser.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/styles.css" >
-    <meta http-equiv="refresh" content="100" >
   </head>
   <body>
 
@@ -18,47 +17,36 @@
     <script type="text/javascript">
       url=window.location.search.split('url=')[1];      
       document.getElementById("preamble").innerHTML = url;
-
     </script>
   
     <script type="text/javascript">
-
-// To Do: Get a search bundle from a single MPD
-urlsplit=url.split('/MedicinalProductDefinition/');
-
-if (urlsplit[1]) {
-  console.log('BEFORE: '+urlsplit[0]);
-  console.log('AFTER: '+urlsplit[1]);
-  mpdid=urlsplit[1]
-//  qrystring = '?_include%3Aiterate=AdministrableProductDefinition%3Amanufactured-item&_revinclude=RegulatedAuthorization%3Asubject&_revinclude=PackagedProductDefinition%3Apackage-for&_revinclude=AdministrableProductDefinition%3Aform-of&_revinclude%3Aiterate=Ingredient%3Afor&_format=json&_id='+mpdid;
-  qrystring = '?_revinclude=RegulatedAuthorization:subject&_revinclude=PackagedProductDefinition:package-for&_revinclude=AdministrableProductDefinition:form-of&_include:iterate=AdministrableProductDefinition:manufactured-item&_revinclude:iterate=Ingredient:for&_format=json&_id='+mpdid;
-  url=urlsplit[0]+'/MedicinalProductDefinition'+qrystring;
-}
-
-/* Search:
-
-/MedicinalProductDefinition?_id=XXXXXXX
-   &_revinclude=RegulatedAuthorization:subject
-   &_revinclude=PackagedProductDefinition:package-for
-   &_revinclude=AdministrableProductDefinition:form-of
-     &_include:iterate=AdministrableProductDefinition:manufactured-item
-       &_revinclude:iterate=Ingredient:for
-*/
-
-        const result = document.querySelector('#result')
-        const engine = new liquidjs.Liquid()
-        $.get("./templates/template.liquid", function(ltemplate) {
-            const resourceUrl = window.location.search.split('url=')[1];
-            $.getJSON(url, function(json) {
-              console.log(url)
+      urlsplit=url.split('/MedicinalProductDefinition/');
+      if (urlsplit[1]) {
+        mpdid=urlsplit[1]
+        qrystring = '?_revinclude=RegulatedAuthorization:subject&_revinclude=PackagedProductDefinition:package-for&_revinclude=AdministrableProductDefinition:form-of&_include:iterate=AdministrableProductDefinition:manufactured-item&_revinclude:iterate=Ingredient:for&_format=json&_id='+mpdid;
+        url=urlsplit[0]+'/MedicinalProductDefinition'+qrystring;
+      }
+      /* Search:
+      /MedicinalProductDefinition?_id=XXXXXXX
+        &_revinclude=RegulatedAuthorization:subject
+        &_revinclude=PackagedProductDefinition:package-for
+        &_revinclude=AdministrableProductDefinition:form-of
+          &_include:iterate=AdministrableProductDefinition:manufactured-item
+            &_revinclude:iterate=Ingredient:for
+      */
+      const result = document.querySelector('#result')
+      const engine = new liquidjs.Liquid()
+      $.get("./templates/template.liquid", function(ltemplate) {
+          const resourceUrl = window.location.search.split('url=')[1];
+          $.getJSON(url, function(json) {
+            console.log(url)
 //e.g. index.html?url=./resources/Bundle-005-CanifugCremolum-EE-FullProduct.json
 //            $.getJSON("./resources/Bundle-005-CanifugCremolum-EE-FullProduct2.json", function(json) {
-//                console.log(json)
-                engine
-                .parseAndRender(ltemplate, json)
-                .then(html => result.innerHTML = html)
-            });
-        });
+              engine
+              .parseAndRender(ltemplate, json)
+              .then(html => result.innerHTML = html)
+          });
+      });
 
       </script>
 
