@@ -14,22 +14,24 @@
     <div id="result" class="container rcorners"></div>
     <p id="preamble"></p>
 
-
-
     <script type="text/javascript">
       url=window.location.search.split('url=')[1];      
-      document.getElementById("preamble").innerHTML = url;
+//      document.getElementById("preamble").innerHTML = url;
     </script>
-
 
     <script type="text/javascript">
         var templatedata = {}
-        var templateResourceType = "";
+        var resourceType = "";
         var templateQuery = "";
         var templateFile="";
-        var resourceType="MedicinalProductDefinition"
 
-        // need to get these variables from the URL and the templates.json file
+      
+      
+        resourceType="MedicinalProductDefinition";
+        templateFile='mpd.liquid';
+        templateQuery="&_revinclude=RegulatedAuthorization:subject&_include:iterate=RegulatedAuthorization:holder&_revinclude=PackagedProductDefinition:package-for&_include:iterate=PackagedProductDefinition:manufactured-item&_revinclude=AdministrableProductDefinition:form-of&_revinclude:iterate=Ingredient:for"
+      
+// To do: need to get these variables from the URL and the corresponding entry in ./templates.json
 /*
         $.getJSON('templates.json', function(jd) {
           templatedata = jd;
@@ -44,18 +46,14 @@
         }
 */
 
-      templateFile='mpd.liquid';
-      templateQuery="&_revinclude=RegulatedAuthorization:subject&_include:iterate=RegulatedAuthorization:holder&_revinclude=PackagedProductDefinition:package-for&_include:iterate=PackagedProductDefinition:manufactured-item&_revinclude=AdministrableProductDefinition:form-of&_revinclude:iterate=Ingredient:for"
-      templateResourceType="MedicinalProductDefinition"
 
       urlsplit=url.split('/'+resourceType+'/');
       if (urlsplit[1]) {
         mpdid=urlsplit[1];
 //        qrystring = '&_revinclude=RegulatedAuthorization:subject&_include:iterate=RegulatedAuthorization:holder&_revinclude=PackagedProductDefinition:package-for&_include:iterate=PackagedProductDefinition:manufactured-item&_revinclude=AdministrableProductDefinition:form-of&_revinclude:iterate=Ingredient:for'
-        url=urlsplit[0]+'/'+templateResourceType+'?_id='+mpdid+templateQuery+'&_format=json';
+        url=urlsplit[0]+'/'+resourceType+'?_id='+mpdid+templateQuery+'&_format=json';
       }
       
-
       /* Search:
       /MedicinalProductDefinition?_id=XXXXXXX
         &_revinclude=RegulatedAuthorization:subject
@@ -79,7 +77,6 @@
           });
       });
 
-      </script>
-
+    </script>
   </body>
 </html>
