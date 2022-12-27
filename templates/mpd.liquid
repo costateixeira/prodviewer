@@ -72,7 +72,6 @@
 
   {% assign ras = entry | where: "resource.resourceType", "RegulatedAuthorization" %}
 
-
   {% for rar in ras %}
     {% assign ra = rar.resource %}
     {% assign mpdtid = mpd.id | prepend: 'MedicinalProductDefinition/' %}
@@ -105,7 +104,24 @@
           <b>
             {{ ra.holder.reference | split: '/' | last }}
           </b>
+          {% assign holderorg = ra.holder.reference | split: '/' | last %}
         </p>
+
+        {% assign orgentries = entry | where: "resource.resourceType", "Organization" %}
+
+        {% for orgentry in orgentries %}
+          {% assign org = orgentry.resource %}
+          {% assign orgid = org.id %}
+          {% assign orgrefid = org.id | prepend: 'Organization/' %}
+
+
+          {% if ra.holder.reference == orgrefid %}
+            DO STUFF
+          {% endif %}
+        {% endfor %}
+
+
+
         <p>
           Status:
           <b>

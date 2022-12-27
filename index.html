@@ -14,6 +14,8 @@
     <div id="result" class="container rcorners"></div>
     <p id="preamble"></p>
 
+
+
     <script type="text/javascript">
       url=window.location.search.split('url=')[1];      
 //      document.getElementById("preamble").innerHTML = url;
@@ -25,8 +27,7 @@
         var templateQuery = "";
         var templateFile="";
 
-      
-      
+
         resourceType="MedicinalProductDefinition";
         templateFile='mpd.liquid';
         templateQuery="&_revinclude=RegulatedAuthorization:subject&_include:iterate=RegulatedAuthorization:holder&_revinclude=PackagedProductDefinition:package-for&_include:iterate=PackagedProductDefinition:manufactured-item&_revinclude=AdministrableProductDefinition:form-of&_revinclude:iterate=Ingredient:for"
@@ -54,15 +55,6 @@
         url=urlsplit[0]+'/'+resourceType+'?_id='+mpdid+templateQuery+'&_format=json';
       }
       
-      /* Search:
-      /MedicinalProductDefinition?_id=XXXXXXX
-        &_revinclude=RegulatedAuthorization:subject
-          &_include:iterate=RegulatedAuthorization:holder
-        &_revinclude=PackagedProductDefinition:package-for
-          &_include:iterate=PackagedProductDefinition:manufactured-item
-        &_revinclude=AdministrableProductDefinition:form-of
-            &_revinclude:iterate=Ingredient:for
-      */
       const result = document.querySelector('#result')
       const engine = new liquidjs.Liquid()
       $.get("./templates/"+templateFile, function(ltemplate) {
