@@ -211,7 +211,7 @@
             {% assign pckg = ppd.package %}
               <div class="container rcorners pack bleft">
               {% comment %}Include the ppd-package (recursive, with pckg as the object to parse) {% endcomment %}
-              {% include './templates/ppd-package.liquid' with pckg %}
+              {% include 'ppd-package.liquid' with pckg %}
 
             </div>
 

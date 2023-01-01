@@ -12,13 +12,14 @@
   <body>
 
     <div id="result" class="container rcorners"></div>
-    <p id="preamble"></p>
+    <p id="preamble">v0.1.4</p>
 
 
 
     <script type="text/javascript">
       url=window.location.search.split('url=')[1];      
 //      document.getElementById("preamble").innerHTML = url;
+
     </script>
 
     <script type="text/javascript">
@@ -27,6 +28,7 @@
         var templateQuery = "";
         var templateFile="";
 
+        url = 'http://fhir.hl7.pt/fhir/MedicinalProductDefinition/mp-1cd4d52bdfe0cb782a5e7a5b0dfbc00a'
 
         resourceType="MedicinalProductDefinition";
         templateFile='mpd.liquid';
