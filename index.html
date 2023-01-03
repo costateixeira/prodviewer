@@ -66,17 +66,23 @@
 
       const result = document.querySelector('#result')
       const engine = new liquidjs.Liquid()
-      $.get("./templates/"+templateFile, function(ltemplate) {
-          $.getJSON(newUrl, function(json) {
-            console.log(newUrl)
-//e.g. index.html?url=./resources/Bundle-005-CanifugCremolum-EE-FullProduct.json
-//            $.getJSON("./resources/Bundle-005-CanifugCremolum-EE-FullProduct2.json", function(json) {
-            engine
-              .parseAndRender(ltemplate, json)
-              .then(html => result.innerHTML = html)
-          });
-      });
 
+      Promise.all([
+        fetch('./templates/' + templateFile, {
+          mode: 'cors'
+        }),
+        fetch(newUrl)
+      ]).then(([respTemplate, respResource]) => {
+        Promise.all([
+          respTemplate.text(),
+          respResource.json()
+        ]).then(([templateText, resource]) => {
+          console.log(resource, templateText)
+          engine.parseAndRender(templateText, resource)
+          .then(html => result.innerHTML = html)
+        })
+      })
+    
     </script>
   </body>
 </html>
