@@ -12,7 +12,7 @@ jobs:
       uses: garygrossgarten/github-action-scp@release
       with:
         local: .
-        remote: /appserver/apps/visualiser
+        remote: /root/appserver/apps/visualiser
         host: ${{ secrets.SERVER2HOST }}
         username: ${{ secrets.SERVER2SSH_USER }}
         password: ${{ secrets.SERVER2PASSWORD }}
