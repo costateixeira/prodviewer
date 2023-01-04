@@ -14,24 +14,17 @@
     <div id="result" class="container rcorners"></div>
     <p id="preamble"></p>
 
-
-
     <script type="text/javascript">
-      url=window.location.search.split('url=')[1];      
-//      document.getElementById("preamble").innerHTML = url;
-    </script>
+        const url = new URL(window.location);
+        let resourceUrl;
+        if (url.searchParams.has('url')) {
+          resourceUrl = new URL(url.searchParams.get('url'));
+        }
 
-    <script type="text/javascript">
-        var templatedata = {}
-        var resourceType = "";
-        var templateQuery = "";
-        var templateFile="";
+        const templatedata = {}
+        const resourceType = 'MedicinalProductDefinition';
+        const templateFile = 'mpd.liquid';
 
-
-        resourceType="MedicinalProductDefinition";
-        templateFile='mpd.liquid';
-        templateQuery="&_revinclude=RegulatedAuthorization:subject&_include:iterate=RegulatedAuthorization:holder&_revinclude=PackagedProductDefinition:package-for&_include:iterate=PackagedProductDefinition:manufactured-item&_revinclude=AdministrableProductDefinition:form-of&_revinclude:iterate=Ingredient:for"
-      
 // To do: need to get these variables from the URL and the corresponding entry in ./templates.json
 /*
         $.getJSON('templates.json', function(jd) {
@@ -46,29 +39,50 @@
           };
         }
 */
-
-
-      urlsplit=url.split('/'+resourceType+'/');
-      if (urlsplit[1]) {
-        mpdid=urlsplit[1];
-//        qrystring = '&_revinclude=RegulatedAuthorization:subject&_include:iterate=RegulatedAuthorization:holder&_revinclude=PackagedProductDefinition:package-for&_include:iterate=PackagedProductDefinition:manufactured-item&_revinclude=AdministrableProductDefinition:form-of&_revinclude:iterate=Ingredient:for'
-        url=urlsplit[0]+'/'+resourceType+'?_id='+mpdid+templateQuery+'&_format=json';
-      }
       
+      const newUrl = new URL(resourceUrl);
+      if (resourceUrl.pathname.match(new RegExp(`\/${resourceType}\/[^\/]*$`))) {
+        const groups = newUrl.pathname.match(/\/([^\/]*)$/, '')
+        if (groups.length == 0) {
+          console.error(`An id for resource ${resourceType} is expected in the url parameter`)
+        }
+
+        const mpdid = groups[0]
+        const params = {
+          '_id' : mpdid,
+          '_revinclude': 'RegulatedAuthorization:subject',
+          '_include:iterate' : 'RegulatedAuthorization:holder',
+          '_revinclude' : 'PackagedProductDefinition:package-for', 
+          '_include:iterate' : 'PackagedProductDefinition:manufactured-item', 
+          '_revinclude' : 'AdministrableProductDefinition:form-of', 
+          '_revinclude:iterate' : 'Ingredient:for',
+          '_format' : 'json'
+        }
+        
+        newUrl.pathname = newUrl.pathname.replace(/\/[^\/]*$/, '')
+        newUrl.searchParams.forEach((val, key) => newUrl.searchParams.delete(key))
+        Object.entries(params).forEach(([key, val]) => newUrl.searchParams.set(key, val))
+      }
+
       const result = document.querySelector('#result')
       const engine = new liquidjs.Liquid()
-      $.get("./templates/"+templateFile, function(ltemplate) {
-          const resourceUrl = window.location.search.split('url=')[1];
-          $.getJSON(url, function(json) {
-            console.log(url)
-//e.g. index.html?url=./resources/Bundle-005-CanifugCremolum-EE-FullProduct.json
-//            $.getJSON("./resources/Bundle-005-CanifugCremolum-EE-FullProduct2.json", function(json) {
-              engine
-              .parseAndRender(ltemplate, json)
-              .then(html => result.innerHTML = html)
-          });
-      });
 
+      Promise.all([
+        fetch('./templates/' + templateFile, {
+          mode: 'cors'
+        }),
+        fetch(newUrl)
+      ]).then(([respTemplate, respResource]) => {
+        Promise.all([
+          respTemplate.text(),
+          respResource.json()
+        ]).then(([templateText, resource]) => {
+          console.log(resource, templateText)
+          engine.parseAndRender(templateText, resource)
+          .then(html => result.innerHTML = html)
+        })
+      })
+    
     </script>
   </body>
 </html>
