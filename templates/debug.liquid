@@ -1,0 +1,31 @@
+size: <br/>
+obj: {{ this.json-empty-behavior.size }} <br/>
+string: {{ this.json-empty-behavior.id.size }}<br/>
+array: {{ this.json-empty-behavior.contexts.size }}<br/>
+-----<br/>
+size: <br/>
+obj: {{ this.json-empty-behavior.first }} <br/>
+string: {{ this.json-empty-behavior.id.first }}<br/>
+array: {{ this.json-empty-behavior.contexts.first }}<br/>
+-----<br/>
+
+{% assign profile_structure = this | where: "index", "0" %}
+Finally:
+{{ profile_structure | inspect }}
+---
+-
+-
+-
+---<br/>
+{% for product in this %}
+  - {{ product.index }}
+{% endfor %}
+
+
+{% assign object = { 'first_key': { 'second_key': 'value' }, 'second_key': ['first_value', 'second_value'] } %}
+
+{% assign filtered_object = object | select: 'object' %}
+
+{% for key, value in filtered_object %}
+  {{ key }}: {{ value }}
+{% endfor %}

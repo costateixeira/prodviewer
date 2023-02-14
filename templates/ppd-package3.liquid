@@ -19,7 +19,7 @@ Containing:
       {% assign fmid = mid.id | prepend: 'ManufacturedItemDefinition/' %}
 
       {% if pckgcontainedItem.item.reference.reference == fmid %}
-        {% include './mid3.liquid' with mid %}
+        {% include './mid.liquid' with mid %}
       {% endif %}
     {% endfor %}
   </div>
@@ -28,7 +28,7 @@ Containing:
 {% for pckg in pckg.package %}
   <br/>
   <div class="container rcorners innerpack bleft">
-    {% include './ppd-package.liquid' with pckg %}
+    {% include './ppd-package3.liquid' with pckg %}
   </div>
 {% endfor %}
 

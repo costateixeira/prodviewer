@@ -47,11 +47,10 @@
         }
 */
 
-
       urlsplit=url.split('/'+resourceType+'/');
       if (urlsplit[1]) {
         mpdid=urlsplit[1];
-//        qrystring = '&_revinclude=RegulatedAuthorization:subject&_include:iterate=RegulatedAuthorization:holder&_revinclude=PackagedProductDefinition:package-for&_include:iterate=PackagedProductDefinition:manufactured-item&_revinclude=AdministrableProductDefinition:form-of&_revinclude:iterate=Ingredient:for'
+        qrystring = '&_revinclude=RegulatedAuthorization:subject&_include:iterate=RegulatedAuthorization:holder&_revinclude=PackagedProductDefinition:package-for&_include:iterate=PackagedProductDefinition:manufactured-item&_revinclude=AdministrableProductDefinition:form-of&_revinclude:iterate=Ingredient:for'
         url=urlsplit[0]+'/'+resourceType+'?_id='+mpdid+templateQuery+'&_format=json';
       }
       
@@ -59,10 +58,10 @@
       const engine = new liquidjs.Liquid()
       $.get("./templates/"+templateFile, function(ltemplate) {
           const resourceUrl = window.location.search.split('url=')[1];
-          $.getJSON(url, function(json) {
+          $.getJSON("./resources/debug.json", function(json) {
+//          $.getJSON(url, function(json) {
             console.log(url)
 //e.g. index.html?url=./resources/Bundle-005-CanifugCremolum-EE-FullProduct.json
-//            $.getJSON("./resources/Bundle-005-CanifugCremolum-EE-FullProduct2.json", function(json) {
               engine
               .parseAndRender(ltemplate, json)
               .then(html => result.innerHTML = html)

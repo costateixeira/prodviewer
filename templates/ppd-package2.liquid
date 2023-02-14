@@ -1,0 +1,10 @@
+<p>Package: {{ pckg.quantity }} {{ pckg.type.coding[0].display }} ({{ pckg.material[0].coding[0].display }})</p>
+
+
+1{{ pckg | json }}
+
+{% for pckg in pckg.package %}
+  <div class="container rcorners packitem">
+    {% include './ppd-package2.liquid' with pckg %}aaaa
+  </div>
+{% endfor % %}

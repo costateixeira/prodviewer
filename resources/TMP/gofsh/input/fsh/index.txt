@@ -1,0 +1,11 @@
+Name                                  Type      File
+005-CanifugCremolum-EE-FullProduct    Instance  resources.fsh
+CanifugCremolum-100mg-Pessary-EE-APD  Instance  resources.fsh
+CanifugCremolum-100mg-Pessary-EE-I    Instance  resources.fsh
+CanifugCremolum-100mg-Pessary-EE-MID  Instance  resources.fsh
+CanifugCremolum-10mg1g-Cream-EE-APD   Instance  resources.fsh
+CanifugCremolum-10mg1g-Cream-EE-I     Instance  resources.fsh
+CanifugCremolum-10mg1g-Cream-EE-MID   Instance  resources.fsh
+CanifugCremolum-EE-MPD                Instance  resources.fsh
+CanifugCremolum-EE-PPD-1033692        Instance  resources.fsh
+CanifugCremolum-EE-RA                 Instance  resources.fsh

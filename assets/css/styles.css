@@ -8,7 +8,7 @@
 
 
 .bleft {
-    margin-topss:7px;
+    margin-top:7px;
     border-radius: 10px; 
     border-left: 9px solid rgb(77, 73, 73);
     }
@@ -81,6 +81,10 @@ p {
 
 .packitem {
     background: #cbddd3;
+}
+
+.innerpack {
+    background: #bbddd3;
 }
 
 .classif {

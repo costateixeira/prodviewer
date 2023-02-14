@@ -1,0 +1,742 @@
+{"this": {
+    "json-empty-behavior" : {
+      "index" : 0,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/json-empty-behavior",
+      "name" : "JsonEmptyBehavior",
+      "title" : "Json Empty Behavior Extension",
+      "path" : "StructureDefinition-json-empty-behavior.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "empty-behaviour: what should be in JSON when a repeating elements has no items? Can be absent, present, or either",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition"
+        },
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition.type"
+        }
+      ],
+      "extension-contexts" : [
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "CDSHooksRequest" : {
+      "index" : 1,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksRequest",
+      "name" : "CDSHooksRequest",
+      "title" : "CDSHooks Request (Logical Definition)",
+      "path" : "StructureDefinition-CDSHooksRequest.html",
+      "kind" : "logical",
+      "type" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksRequest",
+      "base" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksElement",
+      "basename" : "CDSHooksElement",
+      "basepath" : "StructureDefinition-CDSHooksElement.html",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "specialization",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This structure is defined to allow the FHIR Validator to validate a CDSHooks Request Body"
+    },
+    "CDSHooksExtension-DaVinci-config" : {
+      "index" : 2,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksExtension-DaVinci-config",
+      "name" : "CDSHooksExtensionDaVinciConfigTest",
+      "title" : "CDS Hook Extension Definition for DaVinci Configuration  (Test)",
+      "path" : "StructureDefinition-CDSHooksExtension-DaVinci-config.html",
+      "kind" : "logical",
+      "type" : "http://hl7.org/fhir/tools/StructureDefinition/DaVinciConfig",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Base",
+      "basename" : "Base",
+      "basepath" : "http://build.fhir.org/types.html#Base",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "specialization",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This structure is defines the CRD Configuration  (Test only)"
+    },
+    "elementdefinition-date-format" : {
+      "index" : 3,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/elementdefinition-date-format",
+      "name" : "DateFormat",
+      "title" : "Date Format String",
+      "path" : "StructureDefinition-elementdefinition-date-format.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "The date format, as a Java date/time format (todo: extract a common subset from FHIRPath? Java? DotNet? Windows API?)",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition"
+        }
+      ],
+      "extension-contexts" : [
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "CDSHookPatientViewContext" : {
+      "index" : 4,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookPatientViewContext",
+      "name" : "CDSHookPatientViewContext",
+      "title" : "CDS Hook Specific Context for patient-view (Logical Definition)",
+      "path" : "StructureDefinition-CDSHookPatientViewContext.html",
+      "kind" : "logical",
+      "type" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookPatientViewContext",
+      "base" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookContext",
+      "basename" : "CDSHookContext",
+      "basepath" : "StructureDefinition-CDSHookContext.html",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "specialization",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This structure is defined to allow the FHIR Validator to validate a CDSHooks Patient-View context"
+    },
+    "implementationguide-dependency-comment" : {
+      "index" : 5,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
+      "name" : "IGDependencyComment",
+      "title" : "IG Dependency Comment",
+      "path" : "StructureDefinition-implementationguide-dependency-comment.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Mon Mar 02 00:00:00 AEDT 2015",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This extension provides a comment explaining the why an IG depends on another IG.",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ImplementationGuide.dependsOn"
+        }
+      ],
+      "extension-contexts" : ["Extension", "ImplementationGuide", "Path", "multiple", "none"]
+    },
+    "additional-binding" : {
+      "index" : 6,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/additional-binding",
+      "name" : "AdditionalBinding",
+      "title" : "Additional Binding Extension",
+      "path" : "StructureDefinition-additional-binding.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "Extension definition for Additional Binding",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition.binding"
+        },
+        {
+          "type" : "Element ID",
+          "expression" : "CodeSystem.property"
+        }
+      ],
+      "extension-contexts" : [
+        "CodeSystem",
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "CDSHookOrderSignContext" : {
+      "index" : 7,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookOrderSignContext",
+      "name" : "CDSHookOrderSignContext",
+      "title" : "CDS Hook Specific Context for order-sign (Logical Definition)",
+      "path" : "StructureDefinition-CDSHookOrderSignContext.html",
+      "kind" : "logical",
+      "type" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookOrderSignContext",
+      "base" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookContext",
+      "basename" : "CDSHookContext",
+      "basepath" : "StructureDefinition-CDSHookContext.html",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "specialization",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This structure is defined to allow the FHIR Validator to validate a CDSHooks Order-Sign context"
+    },
+    "elementdefinition-json-name" : {
+      "index" : 8,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/elementdefinition-json-name",
+      "name" : "JsonPropertyName",
+      "title" : "Json Property Name Extension",
+      "path" : "StructureDefinition-elementdefinition-json-name.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "Provides the JSON property name for when the JSON name is not a valid element name, or on the root of a type to give the type itself an element name",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition"
+        }
+      ],
+      "extension-contexts" : [
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "json-primitive-choice" : {
+      "index" : 9,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/json-primitive-choice",
+      "name" : "JsonPrimitiveChoiceExt",
+      "title" : "Json Primitive Choice Extension",
+      "path" : "StructureDefinition-json-primitive-choice.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "Marks an element as a choice of types where the type is implied by the JSON type. The only valid types at string, integer, decimal, and boolean",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition"
+        },
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition.type"
+        }
+      ],
+      "extension-contexts" : [
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "CDSHooksResponse" : {
+      "index" : 10,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksResponse",
+      "name" : "CDSHooksResponse",
+      "title" : "CDSHooks Response (Logical Definition)",
+      "path" : "StructureDefinition-CDSHooksResponse.html",
+      "kind" : "logical",
+      "type" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksResponse",
+      "base" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksElement",
+      "basename" : "CDSHooksElement",
+      "basepath" : "StructureDefinition-CDSHooksElement.html",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "specialization",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This structure is defined to allow the FHIR Validator to validate a CDSHooks Response body"
+    },
+    "json-nullable" : {
+      "index" : 11,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/json-nullable",
+      "name" : "JsonNullableExt",
+      "title" : "Json Nullable Extension",
+      "path" : "StructureDefinition-json-nullable.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "If an element is labelled nullable, it can be present as a null value in the json. If this extension does not appear, a null value is treated as an error",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition"
+        },
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition.type"
+        }
+      ],
+      "extension-contexts" : [
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "obligation" : {
+      "index" : 12,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/obligation",
+      "name" : "Obligation",
+      "title" : "Obligation Extension",
+      "path" : "StructureDefinition-obligation.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "Extension definition for Obligation",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition"
+        },
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition.type"
+        }
+      ],
+      "extension-contexts" : [
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "implied-string-prefix" : {
+      "index" : 13,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implied-string-prefix",
+      "name" : "ImpliedStringPrefix",
+      "title" : "Implied String Prefix",
+      "path" : "StructureDefinition-implied-string-prefix.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "A prefix value that is automatically prefixed to the value before it's validated (for use in logical models)",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition"
+        }
+      ],
+      "extension-contexts" : [
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "CDSHookOrderSelectContext" : {
+      "index" : 14,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookOrderSelectContext",
+      "name" : "CDSHookOrderSelectContext",
+      "title" : "CDS Hook Specific Context for order-select (Logical Definition)",
+      "path" : "StructureDefinition-CDSHookOrderSelectContext.html",
+      "kind" : "logical",
+      "type" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookOrderSelectContext",
+      "base" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookContext",
+      "basename" : "CDSHookContext",
+      "basepath" : "StructureDefinition-CDSHookContext.html",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "specialization",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This structure is defined to allow the FHIR Validator to validate a CDSHooks order-select context"
+    },
+    "CDSHooksServices" : {
+      "index" : 15,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksServices",
+      "name" : "CDSHooksServices",
+      "title" : "CDSHooks Services Request (Logical Definition)",
+      "path" : "StructureDefinition-CDSHooksServices.html",
+      "kind" : "logical",
+      "type" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksServices",
+      "base" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksElement",
+      "basename" : "CDSHooksElement",
+      "basepath" : "StructureDefinition-CDSHooksElement.html",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "specialization",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This structure is defined to allow the FHIR Validator to validate a CDSHooks Services response body"
+    },
+    "extension-style" : {
+      "index" : 16,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/extension-style",
+      "name" : "ExtensionStylesEXT",
+      "title" : "Extension Style Extension",
+      "path" : "StructureDefinition-extension-style.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "How the type can be extended. Note that all FHIR types that inherit from ```Element``` have extension-style = fhir-extensions",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "StructureDefinition"
+        }
+      ],
+      "extension-contexts" : ["Extension", "Path", "StructureDefinition", "multiple", "none"]
+    },
+    "json-property-key" : {
+      "index" : 17,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/json-property-key",
+      "name" : "JsonPropertyKey",
+      "title" : "Json Property Key Extension",
+      "path" : "StructureDefinition-json-property-key.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "If true, indicates that in a JSON representation, the indicated child element is the json property key for the value. Implies that this is a property with max = * that has two children, one of which is the key and the other is the value ",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition"
+        },
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition.type"
+        }
+      ],
+      "extension-contexts" : [
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "CDSHooksElement" : {
+      "index" : 18,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksElement",
+      "name" : "CDSHooksElement",
+      "title" : "CDSHooks Services Base Extensible Element",
+      "path" : "StructureDefinition-CDSHooksElement.html",
+      "kind" : "logical",
+      "type" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksElement",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Base",
+      "basename" : "Base",
+      "basepath" : "http://build.fhir.org/types.html#Base",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : true,
+      "derivation" : "specialization",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This structure is defined to allow the FHIR Validator to validate a CDSHooks Services Element with Extensions"
+    },
+    "binding-style" : {
+      "index" : 19,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/binding-style",
+      "name" : "VocabBindingStylesEXT",
+      "title" : "Vocab Binding Style Extension",
+      "path" : "StructureDefinition-binding-style.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "How the data type is bound to vocabulary",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "StructureDefinition"
+        }
+      ],
+      "extension-contexts" : ["Extension", "Path", "StructureDefinition", "multiple", "none"]
+    },
+    "CDSHookContext" : {
+      "index" : 20,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookContext",
+      "name" : "CDSHookContext",
+      "title" : "CDS Hook Specific Context (Logical Definition)",
+      "path" : "StructureDefinition-CDSHookContext.html",
+      "kind" : "logical",
+      "type" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHookContext",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Base",
+      "basename" : "Base",
+      "basepath" : "http://build.fhir.org/types.html#Base",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : true,
+      "derivation" : "specialization",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This structure is defined to allow the FHIR Validator to validate a CDSHooks Request Context"
+    },
+    "CDSHooksExtension-DaVinci-configoptions" : {
+      "index" : 21,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/CDSHooksExtension-DaVinci-configoptions",
+      "name" : "CDSHooksExtensionDaVinciConfigOptionsTest",
+      "title" : "CDS Hook Extension Definition for DaVinci Configuration Options (Test)",
+      "path" : "StructureDefinition-CDSHooksExtension-DaVinci-configoptions.html",
+      "kind" : "logical",
+      "type" : "http://hl7.org/fhir/tools/StructureDefinition/DaVinciConfigOptions",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Base",
+      "basename" : "Base",
+      "basepath" : "http://build.fhir.org/types.html#Base",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "specialization",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This structure is defines the CRD Configuration Options (Test only)"
+    },
+    "id-expectation" : {
+      "index" : 22,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/id-expectation",
+      "name" : "IdExpectationExt",
+      "title" : "Id Expectation Extension",
+      "path" : "StructureDefinition-id-expectation.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "Specifies whether a particular element or resource is expected to have an id or not. Note that this can be done in a profile on the element, but it is sometimes useful to say this e.g. on an abstract element in a logical model",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition"
+        },
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition.type"
+        }
+      ],
+      "extension-contexts" : [
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "implementationguide-resource-format" : {
+      "index" : 23,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-resource-format",
+      "name" : "BinaryResourceFormat",
+      "title" : "Binary Resource Format",
+      "path" : "StructureDefinition-implementationguide-resource-format.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Mon Mar 02 00:00:00 AEDT 2015",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This extension specifies the format (= mime type) of a binary resource, when the binary resource is provided to the IG publisher as raw content (rather than as a FHIR binary resource with base64 content).",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ImplementationGuide.definition.resource"
+        }
+      ],
+      "extension-contexts" : ["Extension", "ImplementationGuide", "Path", "multiple", "none"]
+    },
+    "type-specifier" : {
+      "index" : 24,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/type-specifier",
+      "name" : "TypeSpecifier",
+      "title" : "Type Specifier Extension",
+      "path" : "StructureDefinition-type-specifier.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "In some logical models, the type of content at one location depends on the value of some other element, and the type is otherwise not explicit in the instance. In such cases, the type of the element is assigned an abstract ancestor type, and this extension specifies how to determine what type is actually used",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ElementDefinition"
+        }
+      ],
+      "extension-contexts" : [
+        "ElementDefinition",
+        "Extension",
+        "Path",
+        "datatypes",
+        "multiple",
+        "none"
+      ]
+    },
+    "profile-mapping" : {
+      "index" : 25,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/profile-mapping",
+      "name" : "ProfileMapping",
+      "title" : "Profile Mapping Extension",
+      "path" : "StructureDefinition-profile-mapping.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Fri Feb 03 18:26:13 AEDT 2023",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "Extension definition for Mapping between ```API``` and ```Profile```. CapabilityStatement.rest.resource.profile has two different profile statements:\n\n* profile - the overall system profile for a resource\n* supportedProfile 0..* - a particular profile that the system supports\n\nWhat is missing from this picture is defining which resources conform to\nwhich profile. Sometimes, of course, it's impossible to define this, but\nquite often, there's an algorithmic relationship that a server or client\ncould use to know that resources with a particular set of values will or should\nconform to a given profile.\n\nThis extension defines a relationship between a search string and a profile.\nAny resource that meets a given search string will be expected to conform to the particular profile. If more than one profile is nominated for a search string, resources SHALL conform to all the listed profiles. The last extension can be without a search matches and remaining resources\n\nThis extension repeats, and order is important - once a match is found, this profile is the one that applies.",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "CapabilityStatement.rest.resource"
+        }
+      ],
+      "extension-contexts" : ["CapabilityStatement", "Extension", "Path", "multiple", "none"]
+    },
+    "implementationguide-resource-logical" : {
+      "index" : 26,
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-resource-logical",
+      "name" : "BinaryResourceLogical",
+      "title" : "Binary Resource Logical",
+      "path" : "StructureDefinition-implementationguide-resource-logical.html",
+      "kind" : "complex-type",
+      "type" : "Extension",
+      "base" : "http://hl7.org/fhir/StructureDefinition/Extension",
+      "basename" : "Extension",
+      "basepath" : "http://hl7.org/fhir/R4/extensibility.html#Extension",
+      "status" : "draft",
+      "date" : "Mon Mar 02 00:00:00 AEDT 2015",
+      "abstract" : false,
+      "derivation" : "constraint",
+      "publisher" : "HL7 International / FHIR Infrastructure",
+      "copyright" : null,
+      "description" : "This extension specifies a logical model to use to validate the binary contents.",
+      "contexts" : [
+        {
+          "type" : "Element ID",
+          "expression" : "ImplementationGuide.definition.resource"
+        }
+      ],
+      "extension-contexts" : ["Extension", "ImplementationGuide", "Path", "multiple", "none"]
+    },
+    "extensionContextsPopulated" : [ "none" ]
+  }
+}

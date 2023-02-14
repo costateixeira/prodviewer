@@ -1,0 +1,12 @@
+aaa
+
+{{ this | inspect }}
+
+{% if '{{this.type}}' == 'Bundle' %}
+  dfsd
+  {% assign filename = 'Bundle-005-CanifugCremolum-EE-FullProduct' %}
+  {% assign bundle = site.data[filename] %}
+
+  {% include mpd.liquid bundle=bundle %}
+
+{% endif %}
