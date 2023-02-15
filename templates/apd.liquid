@@ -32,7 +32,7 @@
 
 
 
-  {% assign apdings = bundle.entry | where: "resource.resourceType", "Ingredient" %}
+  {% assign apdings = entry | where: "resource.resourceType", "Ingredient" %}
 
   {% for apdingr in apdings %}
     {% assign apding = apdingr.resource %}
@@ -41,7 +41,7 @@
 
     {% for apdingfor in apding.for %}
       {% if apdingfor.reference == apdid %}
-        {% include apdingredient.liquid apding=apding %}
+        {% include './apdingredient.liquid' with apding %}
 
       {% endif %}
     {% endfor %}

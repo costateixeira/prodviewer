@@ -1,5 +1,5 @@
 {% comment %}GET all MPDs from the Bundle - the resource inside each entry{% endcomment %}
-{% assign mpdr = bundle.entry | where: "resource.resourceType", "MedicinalProductDefinition" | first %}
+{% assign mpdr = entry | where: "resource.resourceType", "MedicinalProductDefinition" | first %}
 {% assign mpd = mpdr.resource %}
   <div class="container rcorners mpd">
   {% comment %}print the name - current name[0], should be all names{% endcomment %}
@@ -85,7 +85,7 @@
 </p>
 
   {% comment %}Get all RAs (RegAuthorization) from the Bundle{% endcomment %}
-  {% assign ras = bundle.entry | where: "resource.resourceType", "RegulatedAuthorization" %}
+  {% assign ras = entry | where: "resource.resourceType", "RegulatedAuthorization" %}
 
     {% for rar in ras %}
     {% comment %}get the RA resource{% endcomment %}
@@ -94,12 +94,12 @@
     {% assign mpdtid = mpd.id | prepend: 'MedicinalProductDefinition/' %}
     {% comment %}if the current looped RA points to the MPD as subject{% endcomment %}
     {% if ra.subject[0].reference == mpdtid %}
-      {% include regauth.liquid ra=ra %}
+      {% include './templates/regauth.liquid' with ra %}
     {% endif %}
   {% endfor %}
 
   {% comment %}Get PPDs from Bundle {% endcomment %}
-  {% assign ppds = bundle.entry | where: "resource.resourceType", "PackagedProductDefinition" %}
+  {% assign ppds = entry | where: "resource.resourceType", "PackagedProductDefinition" %}
     {% for ppdr in ppds %}
     {% assign ppd = ppdr.resource %}
     {% comment %}Get PPDs that link to MPD, via packagefor[0] {% endcomment %}
@@ -110,13 +110,13 @@
         {% if ppdpackageFor.reference == mpdtid %}
           <div class="container rcorners ppd listcontainer"> <p class="divtitle">
             Package {{ forloop.index }} of {{ ppds | size }}</p>
-          {% include ppd.liquid ppd=ppd %}
+          {% include './templates/ppd.liquid' with ppd %}
         </div>
       {% endif %}
     {% endfor %}
   {% endfor %}
 
-  {% assign apds = bundle.entry | where: "resource.resourceType", "AdministrableProductDefinition" %}
+  {% assign apds = entry | where: "resource.resourceType", "AdministrableProductDefinition" %}
 
   {% if apds %}
 {% comment %}<div class="container rcorners apd listcontainer">{% endcomment %}
@@ -127,7 +127,7 @@
         {% comment %}Do this only if the APD-formOf links to the MPD {% endcomment %}
         {% comment %}FIX - currently only [0], should be  any{% endcomment %}
           {% if apd.formOf[0].reference == mpdtid %}
-        {% include apd.liquid apd=apd %}
+        {% include './templates/apd.liquid' with apd %}
       {% endif %}
     {% endfor %}
   {% comment %}</div>{% endcomment %}
