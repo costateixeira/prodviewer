@@ -14,13 +14,13 @@
       {{ pckgcontainedItem.item.concept.coding[0].display }}
     </b>
   </p>
-  {% assign mids = entry | where: "resource.resourceType", "ManufacturedItemDefinition" %}
+  {% assign mids = bundle.entry | where: "resource.resourceType", "ManufacturedItemDefinition" %}
   {% for midr in mids %}
     {% assign mid = midr.resource %}
     {% assign fmid = mid.id | prepend: 'ManufacturedItemDefinition/' %}
 
     {% if pckgcontainedItem.item.reference.reference == fmid %}
-      {% include './templates/mid.liquid' with mid %}
+      {% include mid.liquid mid=mid %}
     {% endif %}
   {% endfor %}
 {% endfor %}
@@ -28,7 +28,7 @@
 {% for pckg in pckg.packaging %}
   <br/>
   <div class="container rcorners innerpack">
-    {% include './ppd-package.liquid' with pckg %}
+    {% include ppd-package.liquid pckg=pckg %}
   </div>
 {% endfor %}
 

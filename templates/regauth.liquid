@@ -26,7 +26,7 @@
   </p>
 
   {% comment %}Get Orgs from Bundle {% endcomment %}
-  {% assign orgentries = entry | where: "resource.resourceType", "Organization" %}
+  {% assign orgentries = bundle.entry | where: "resource.resourceType", "Organization" %}
 
     {% for orgentry in orgentries %}
     {% assign org = orgentry.resource %}

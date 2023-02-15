@@ -13,7 +13,7 @@
     </b>
   </p>
 
-  {% assign midings = entry | where: "resource.resourceType", "Ingredient" %}
+  {% assign midings = bundle.entry | where: "resource.resourceType", "Ingredient" %}
 
   {% for midingr in midings %}
 
@@ -22,7 +22,7 @@
     {% assign midid = mid.id | prepend: 'ManufacturedItemDefinition/' %}
     {% for midingfor in miding.for %}
       {% if midingfor.reference == midid %}
-        {% include './templates/midingredient.liquid' with miding %}
+        {% include midingredient.liquid miding=miding %}
 
       {% endif %}
     {% endfor %}
