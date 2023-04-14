@@ -1,31 +1,18 @@
-# This is a simple workflow that runs the publisher and copies the output to https://<owner>.github.io/<repo>/index.html
-# Based on the instructions from Elliot Silver, available from: https://www.argentixinfo.com/archives/156
-# Change log:
-# 2021-06-18: (JCT): publish default branches to / , other branches branches/<branch>
-# 2021-11-26: (JCT): Reusable workflow
-# 2022-01-28: (JCT): add auto-create gh-pages if it doesn't exist
-
-# Make sure your repo has a branch called gh-pages
-
-name: CI
-
-# Controls when the action will run. 
-on: 
+name: scp files
+on:
   push:
   pull_request:
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Deploy main
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: . # The folder the action should deploy.
-          commit-message: Deploy main branch
+    - uses: actions/checkout@master
+    - name: Copy folder content recursively to remote
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: .
+        remote: /root/appserver/apps/visualiser
+        host: ${{ secrets.SERVER2HOST }}
+        username: ${{ secrets.SERVER2SSH_USER }}
+        password: ${{ secrets.SERVER2PASSWORD }}
